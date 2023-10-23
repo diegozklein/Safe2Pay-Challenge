@@ -1,0 +1,15 @@
+{
+  "name": "safe2pay-challenge",
+  "version": "1.0.0",
+  "description": "Safe2Pay API Test Automation Testing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@faker-js/faker": "^8.2.0",
+    "cypress": "^13.3.2"
+  }
+}
