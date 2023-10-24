@@ -151,4 +151,8 @@ describe("User Deletion Testing", () => {
   });
 });
 
-describe("Post Creation Testing", () => {});
+describe("Post Creation Testing", () => {
+  it('Create post with success', () => {
+    
+  });
+});
