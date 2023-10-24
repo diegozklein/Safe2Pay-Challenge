@@ -1,4 +1,4 @@
-name: Cypress API Tests
+name: Safe2Pay API Tests
 on: push
 jobs:
   cypress-run:
@@ -12,3 +12,6 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           spec: cypress/e2e/api/dummyapi.cy.js
+        env: 
+          CYPRESS_RECORD_KEY: ${{secrets.CYPRESS_RECORD_KEY}}
+          GITHUB_TOKEN: ${{secrets.TOKEN}}
