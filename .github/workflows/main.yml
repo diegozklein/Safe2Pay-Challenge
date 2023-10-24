@@ -1,17 +1,14 @@
-name: Cypress Tests
-
+name: Cypress API Tests
 on: push
-
 jobs:
   cypress-run:
-    runs-on: windows-2022
+    name: Cypress run
+    runs-on: ubuntu-22.04
     steps:
-      - name: "API Tests"
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          wait-on-timeout: 120
-          browser: chrome
-          record: true
-          parallel: true
-          spec: cypress/tests/e2e/api/*
-          config-file: cypress.config.ts
+          spec: cypress/e2e/api/dummyapi.cy.js
