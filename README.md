@@ -5,7 +5,6 @@
 💻 CI/CD + [Cypress Cloud][cypresscloud]
 
 
-[cypresscloud]: https://cloud.cypress.io/projects/6xuqh4/branches/main/overview
 
 ## Requisites
 
@@ -43,4 +42,6 @@ Now you have to select the desired spec and voila.
 
 # Cypress Cloud
 
-If you want to check my CI/CD implementation using GitHub Actions and Cypress Cloud, you can check both Actions tab from this repository and the link below to the Cypress Cloud Platform
+If you want to check my CI/CD implementation using GitHub Actions and Cypress Cloud, you can check both Actions tab from this repository and click [here][cypresscloud] to access Cypress Cloud.
+
+[cypresscloud]: https://cloud.cypress.io/projects/6xuqh4/branches/main/overview
