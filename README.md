@@ -45,3 +45,10 @@ Now you have to select the desired spec and voila.
 If you want to check my CI/CD implementation using GitHub Actions and Cypress Cloud, you can check both Actions tab from this repository and click [here][cypresscloud] to access Cypress Cloud.
 
 [cypresscloud]: https://cloud.cypress.io/projects/6xuqh4/branches/main/overview
+
+
+# Extra
+
+If you want, you can access the project [Wiki][wiki]. (Note: The wiki is incomplete)
+
+[wiki]: https://github.com/diegozklein/Safe2Pay-Challenge/wiki
