@@ -24,12 +24,6 @@ describe("User Creation Testing", () => {
   */
   //200 - User Created
   it("Create user with success", () => {
-    //Will be replace for an BeforeEach logic since it's used in every test
-    cy.fixture("api-variables").as("apiData");
-    cy.get("@apiData").then((apiData) => {
-      appId = apiData.appId;
-    });
-
     cy.request({
       method: "POST",
       url: "/user/create",
@@ -52,12 +46,6 @@ describe("User Creation Testing", () => {
 
   //400 - Email Already Used
   it("Create user with status 400", () => {
-    cy.fixture("api-variables").as("apiData");
-
-    cy.get("@apiData").then((apiData) => {
-      appId = apiData.appId;
-    });
-
     cy.request({
       method: "POST",
       url: "/user/create",
@@ -77,12 +65,6 @@ describe("User Creation Testing", () => {
 
   //403 - Invalid app-id
   it("Create user with status 403", () => {
-    cy.fixture("api-variables").as("apiData");
-
-    cy.get("@apiData").then((apiData) => {
-      appId = apiData.appId;
-    });
-
     cy.request({
       method: "POST",
       url: "/user/create",
@@ -104,8 +86,6 @@ describe("User Deletion Testing", () => {
   */
   let id;
   beforeEach(() => {
-    cy.fixture("api-variables").as("apiData");
-
     cy.request({
       method: "POST",
       url: "/user/create",
@@ -244,7 +224,7 @@ describe("Post Deletion Testing", () => {
     });
   });
 
-  it.only("Delete post with success", () => {
+  it("Delete post with success", () => {
     cy.request({
       method: "DELETE",
       url: `/post/${id}`,
