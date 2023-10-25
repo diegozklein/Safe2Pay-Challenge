@@ -90,7 +90,7 @@ describe("User Deletion Testing", () => {
       method: "POST",
       url: "/user/create",
       headers: {
-        "app-id": "6536af521956e10e49c899e2",
+        "app-id": Cypress.env("appId"),
       },
       body: {
         firstName: faker.person.firstName(),
@@ -107,7 +107,7 @@ describe("User Deletion Testing", () => {
       method: "DELETE",
       url: `/user/${id}`,
       headers: {
-        "app-id": "6536af521956e10e49c899e2",
+        "app-id": Cypress.env("appId"),
       },
     }).should((response) => {
       expect(response.status).to.eq(200);
@@ -122,7 +122,7 @@ describe("User Deletion Testing", () => {
       url: "/user/wrongid",
       failOnStatusCode: false,
       headers: {
-        "app-id": "6536af521956e10e49c899e2",
+        "app-id": Cypress.env("appId"),
       },
     }).should((response) => {
       expect(response.status).to.eq(400);
@@ -139,7 +139,7 @@ describe("Post Creation Testing", () => {
       method: "POST",
       url: "/user/create",
       headers: {
-        "app-id": "6536af521956e10e49c899e2",
+        "app-id": Cypress.env("appId"),
       },
       body: {
         firstName: faker.person.firstName(),
@@ -156,7 +156,7 @@ describe("Post Creation Testing", () => {
       method: "POST",
       url: "/post/create",
       headers: {
-        "app-id": "6536af521956e10e49c899e2",
+        "app-id": Cypress.env("appId"),
       },
       body: {
         text: "Lorem ipsum dolor sit amet, consectetuer",
@@ -177,7 +177,7 @@ describe("Post Creation Testing", () => {
       method: "POST",
       url: "/post/create",
       headers: {
-        "app-id": "6536af521956e10e49c899e2",
+        "app-id": Cypress.env("appId"),
       },
       failOnStatusCode: false,
       body: {
@@ -209,7 +209,7 @@ describe("Post Deletion Testing", () => {
       method: "POST",
       url: "/post/create",
       headers: {
-        "app-id": "6536af521956e10e49c899e2",
+        "app-id": Cypress.env("appId"),
       },
       body: {
         text: "Lorem ipsum dolor sit amet, consectetuer",
@@ -229,7 +229,7 @@ describe("Post Deletion Testing", () => {
       method: "DELETE",
       url: `/post/${id}`,
       headers: {
-        "app-id": "6536af521956e10e49c899e2",
+        "app-id": Cypress.env("appId"),
       }
     }).should((response) => {
       expect(response.status).to.eq(200);
