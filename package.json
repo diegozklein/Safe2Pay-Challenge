@@ -4,7 +4,7 @@
   "description": "Safe2Pay API Test Automation Testing",
   "main": "index.js",
   "scripts": {
-    
+    "cy:run": "cypress run"
   },
   "author": "",
   "license": "ISC",

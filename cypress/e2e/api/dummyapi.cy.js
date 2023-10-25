@@ -28,7 +28,7 @@ describe("User Creation Testing", () => {
       method: "POST",
       url: "/user/create",
       headers: {
-        "app-id": "6536af521956e10e49c899e2",
+        "app-id": Cypress.env("appId"),
       },
       body: bodyParams,
     }).should((response) => {
@@ -51,7 +51,7 @@ describe("User Creation Testing", () => {
       url: "/user/create",
       failOnStatusCode: false,
       headers: {
-        "app-id": "6536af521956e10e49c899e2",
+        "app-id": Cypress.env("appId"),
       },
       body: {
         firstName: bodyParams.firstName,

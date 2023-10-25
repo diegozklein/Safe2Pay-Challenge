@@ -7,5 +7,8 @@ module.exports = defineConfig({
     },
     baseUrl: 'https://dummyapi.io/data/v1/'
   },
-  projectId: "6xuqh4"
+  projectId: "6xuqh4",
+  env: {
+    appId: "6536af521956e10e49c899e2"
+  }
 });
