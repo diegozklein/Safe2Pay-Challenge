@@ -8,6 +8,20 @@ describe("User Creation Testing", () => {
   };
   let generatedFN = bodyParams.firstName;
   let generatedEmail = bodyParams.email;
+  let id;
+
+  after(() => {
+    cy.request({
+      method: "DELETE",
+      url: `/user/${id}`,
+      headers: {
+        "app-id": Cypress.env("appId"),
+      },
+    }).should((response) => {
+      expect(response.status).to.eq(200);
+    });
+  });
+
   /*Problems with this test: 
     Since we don't save the random firstName or the random email
     we can lost track of the test users created in the DB
@@ -41,6 +55,8 @@ describe("User Creation Testing", () => {
         registerDate: response.body.registerDate,
         updatedDate: response.body.updatedDate,
       });
+    }).then((response) => {
+      id = response.body.id;
     });
   });
 
@@ -126,113 +142,6 @@ describe("User Deletion Testing", () => {
       },
     }).should((response) => {
       expect(response.status).to.eq(400);
-    });
-  });
-});
-
-describe("Post Creation Testing", () => {
-  let id;
-  before(() => {
-    cy.fixture("api-variables").as("apiData");
-
-    cy.request({
-      method: "POST",
-      url: "/user/create",
-      headers: {
-        "app-id": Cypress.env("appId"),
-      },
-      body: {
-        firstName: faker.person.firstName(),
-        lastName: "Doe",
-        email: faker.internet.email(),
-      },
-    }).then((response) => {
-      id = response.body.id;
-    });
-  });
-
-  it("Create post with success", () => {
-    cy.request({
-      method: "POST",
-      url: "/post/create",
-      headers: {
-        "app-id": Cypress.env("appId"),
-      },
-      body: {
-        text: "Lorem ipsum dolor sit amet, consectetuer",
-        image:
-          "https://cdn.pixabay.com/photo/2014/06/03/19/38/road-sign-361514_960_720.png",
-        likes: 0,
-        tags: ["animal", "dog", "golden retriever"],
-        owner: id,
-      },
-    }).should((response) => {
-      expect(response.status).to.eq(200);
-    });
-  });
-
-  //400 - Invalid Body (Owner Id is wrong on purpose)
-  it("Create post with code 400", () => {
-    cy.request({
-      method: "POST",
-      url: "/post/create",
-      headers: {
-        "app-id": Cypress.env("appId"),
-      },
-      failOnStatusCode: false,
-      body: {
-        text: "Lorem ipsum dolor sit amet, consectetuer",
-        image:
-          "https://cdn.pixabay.com/photo/2014/06/03/19/38/road-sign-361514_960_720.png",
-        likes: 0,
-        tags: ["animal", "dog", "golden retriever"],
-        owner: "wrongownerid",
-      },
-    }).should((response) => {
-      expect(response.status).to.eq(400);
-      expect(response.body).to.deep.eq({
-        error: "BODY_NOT_VALID",
-        data: {},
-      });
-    });
-  });
-});
-
-describe("Post Deletion Testing", () => {
-  /*This create the test post that will be deleted
-    The id variable is used to save the post Id,
-    the id is needed in order to delete the post
-    */
- let id;
- beforeEach(() => {
-    cy.request({
-      method: "POST",
-      url: "/post/create",
-      headers: {
-        "app-id": Cypress.env("appId"),
-      },
-      body: {
-        text: "Lorem ipsum dolor sit amet, consectetuer",
-        image:
-          "https://cdn.pixabay.com/photo/2014/06/03/19/38/road-sign-361514_960_720.png",
-        likes: 0,
-        tags: ["animal", "dog", "golden retriever"],
-        owner: "6538c4fbc278791dc83f1d6e",
-      },
-    }).then((response) => {
-      id = response.body.id;
-    });
-  });
-
-  it("Delete post with success", () => {
-    cy.request({
-      method: "DELETE",
-      url: `/post/${id}`,
-      headers: {
-        "app-id": Cypress.env("appId"),
-      }
-    }).should((response) => {
-      expect(response.status).to.eq(200);
     });
   });
 });
